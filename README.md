@@ -1,6 +1,6 @@
 # ProvenanceLedger
 
-**Claude's text watermark tells a third party that Claude was probably involved. It does not tell anyone how much, and your team can't run the detector.** This is a small Swift library and iOS demo for the part you *can* own: recording, at generation time and through every human edit, who chose the words your app ships.
+**Claude's text watermark tells a third party that Claude was probably involved. It can't say how much, and most teams can't run the detector.** This is a small Swift library and iOS demo for the part you *can* own: recording, at generation time and through every human edit, who chose the words your app ships.
 
 Article: (added after publish)
 

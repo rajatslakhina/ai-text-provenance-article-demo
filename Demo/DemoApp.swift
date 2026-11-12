@@ -72,7 +72,7 @@ struct WeekView: View {
                             CountPill(count: summary.weak, label: "unreliable", color: .orange)
                             CountPill(count: summary.none, label: "not expected", color: .gray)
                         }
-                        Text("What a third-party detector would probably see. You don't have the detector; you do have this ledger.")
+                        Text("What a third-party detector would probably see. You probably don't have the detector; you do have this ledger.")
                             .font(.caption).foregroundStyle(.secondary)
                     }
                     .padding(.vertical, 4)
@@ -304,7 +304,7 @@ extension MarkExpectation {
     var explanations: [String] {
         switch self {
         case .expected:
-            return ["Covered model, default sampling, long enough, lightly edited: a detector would probably find it."]
+            return ["Covered model, long enough, lightly edited, and no documented caveat applies: a detector would probably find it."]
         case .weak(let reasons):
             return reasons.map { reason in
                 switch reason {
