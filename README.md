@@ -2,7 +2,7 @@
 
 **Claude's text watermark tells a third party that Claude was probably involved. It can't say how much, and most teams can't run the detector.** This is a small Swift library and iOS demo for the part you *can* own: recording, at generation time and through every human edit, who chose the words your app ships.
 
-Article: (added after publish)
+Article: [The Claude Watermark Lets a Reporter Check Your App's Text. It Can't Say How Much a Person Wrote.](https://medium.com/@er.rajatlakhina/the-claude-watermark-lets-a-reporter-check-your-apps-text-it-can-t-say-how-much-a-person-wrote-047153261d7b)
 
 ![The week view: 11 of 12 shipped texts contain model-chosen words; 4 would probably carry a detectable mark, 5 are unreliable, 2 are not expected](Demo/Screenshots/week-ledger.png)
 
