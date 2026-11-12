@@ -51,5 +51,17 @@ final class SampleWeekReportTests: XCTestCase {
         // does not tell you whether a third party will find a mark.
         let opus47 = Set(records.filter { $0.stamp.model == "claude-opus-4-7" }.map(\.expectation.shortLabel))
         XCTAssertEqual(opus47, ["Mark expected", "Mark unreliable", "No mark expected"])
+
+        // Per-row values the article and README quote.
+        let modelShares = records.map { Int(($0.final.modelShare * 100).rounded()) }
+        XCTAssertEqual(modelShares, [99, 60, 99, 100, 100, 100, 100, 100, 45, 97, 0, 100])
+        XCTAssertEqual(records[1].expectation, .weak([.shortText(sentences: 4)]))
+        XCTAssertEqual(records[1].final.modelSentenceCount, 4)
+        XCTAssertEqual(Int((records[1].final.humanShare * 100).rounded()), 40)
+        XCTAssertEqual(records[2].stamp.sampling.temperature, 0.2)
+        XCTAssertEqual(records[2].expectation, .weak([.samplingOverride]))
+        XCTAssertEqual(Int((records[2].final.humanShare * 100).rounded()), 1)
+        XCTAssertEqual(Int((records[8].final.humanShare * 100).rounded()), 55)
+        XCTAssertEqual(records[11].final.quotedCharacterCount, 50)
     }
 }

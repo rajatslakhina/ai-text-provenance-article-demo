@@ -194,14 +194,6 @@ struct RecordDetail: View {
         return out
     }
 
-    private func samplingText(_ s: SamplingOverrides) -> String {
-        guard s.sentAny else { return "defaults (none sent)" }
-        var parts: [String] = []
-        if let t = s.temperature { parts.append("temperature \(t)") }
-        if let p = s.topP { parts.append("top_p \(p)") }
-        if let k = s.topK { parts.append("top_k \(k)") }
-        return parts.joined(separator: ", ")
-    }
 }
 
 struct Legend: View {
@@ -272,7 +264,7 @@ struct LookupView: View {
                             Section("Answer: record \(record.id + 1)") {
                                 Fact("Model", record.stamp.model)
                                 Fact("Prompt", record.stamp.promptVersion)
-                                Fact("Sampling", record.stamp.sampling.sentAny ? "temperature \(record.stamp.sampling.temperature ?? 0)" : "defaults")
+                                Fact("Sampling", samplingText(record.stamp.sampling))
                                 Fact("Typed by a person", percent(record.final.humanShare))
                                 Fact("Label user saw", record.disclosure.label.userFacingText ?? "No label")
                                 Badge(text: record.expectation.shortLabel, color: record.expectation.color)
@@ -290,6 +282,15 @@ struct LookupView: View {
 // MARK: - Helpers
 
 func percent(_ value: Double) -> String { "\(Int((value * 100).rounded()))%" }
+
+func samplingText(_ s: SamplingOverrides) -> String {
+    guard s.sentAny else { return "defaults (none sent)" }
+    var parts: [String] = []
+    if let t = s.temperature { parts.append("temperature \(t)") }
+    if let p = s.topP { parts.append("top_p \(p)") }
+    if let k = s.topK { parts.append("top_k \(k)") }
+    return parts.joined(separator: ", ")
+}
 
 extension MarkExpectation {
     var color: Color {

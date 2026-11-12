@@ -14,10 +14,8 @@ extension WatermarkCoverage {
     public static let documentedNov2026: WatermarkCoverage = {
         let nov3 = Calendar.utcDate(2026, 11, 3)
         let nov10 = Calendar.utcDate(2026, 11, 10)
-        let sep1 = Calendar.utcDate(2026, 9, 1)
         return WatermarkCoverage(
             entries: [
-                "claude-mythos-5-1": CoverageEntry(markedFrom: [.anthropicAPI: sep1]),
                 "claude-mythos-5": CoverageEntry(markedFrom: [.anthropicAPI: nov3, .bedrock: nov3]),
                 "claude-opus-4-7": CoverageEntry(markedFrom: [.anthropicAPI: nov3, .bedrock: nov3]),
                 "claude-sonnet-4-6": CoverageEntry(markedFrom: [.anthropicAPI: nov3, .bedrock: nov3],
